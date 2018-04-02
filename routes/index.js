@@ -6,6 +6,7 @@ const authFromToken = require('./authFromToken');
 const getUsers = require('./getUsers');
 const deleteUser = require('./deleteUser');
 const updateUser = require('./updateUser');
+const updateUserPermission = require('./updateUserPermission');
 const saveUserImage = require('./saveUserImage');
 
 router.prefix('/api');
@@ -20,5 +21,6 @@ router.get('/getUsers', getUsers);
 router.delete('/deleteUser/:id', deleteUser);
 
 router.put('/updateUser/:id', updateUser);
+router.put('/updateUserPermission/:id', updateUserPermission);
 
 module.exports = router;

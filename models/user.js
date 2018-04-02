@@ -17,22 +17,22 @@ const userSchema = new mongoose.Schema({
   access_token: { type: String, default: null },
   permission: {
     chat: {
-      C: { type: Boolean, default: false },
-      D: { type: Boolean, default: false },
-      R: { type: Boolean, default: true },
-      U: { type: Boolean, default: true }
+      C: { type: Boolean, default: false, required: true },
+      D: { type: Boolean, default: false, required: true },
+      R: { type: Boolean, default: true, required: true },
+      U: { type: Boolean, default: true, required: true }
     },
     news: {
-      C: { type: Boolean, default: false },
-      D: { type: Boolean, default: false },
-      R: { type: Boolean, default: true },
-      U: { type: Boolean, default: false }
+      C: { type: Boolean, default: false, required: true },
+      D: { type: Boolean, default: false, required: true },
+      R: { type: Boolean, default: true, required: true },
+      U: { type: Boolean, default: false, required: true }
     },
     setting: {
-      C: { type: Boolean, default: false },
-      D: { type: Boolean, default: false },
-      R: { type: Boolean, default: false },
-      U: { type: Boolean, default: false }
+      C: { type: Boolean, default: false, required: true },
+      D: { type: Boolean, default: false, required: true },
+      R: { type: Boolean, default: false, required: true },
+      U: { type: Boolean, default: false, required: true }
     }
   }
 }, {
