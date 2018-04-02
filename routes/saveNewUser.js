@@ -15,7 +15,7 @@ module.exports = async ctx => {
     } else {
       let permission;
 
-      // give all permissions to the first registred user
+      // give all permissions to the first registered user
       if (await User.count() === 0) {
         permission = {
           chat: { C: true, R: true, U: true, D: true },
