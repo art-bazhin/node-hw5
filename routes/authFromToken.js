@@ -6,7 +6,7 @@ module.exports = async ctx => {
   try {
     const user = await User.findOne({ access_token: token });
 
-    if (user) {
+    if (user && token) {
       ctx.body = user;
     } else {
       ctx.body = {

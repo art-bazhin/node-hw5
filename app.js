@@ -1,10 +1,11 @@
 const path = require('path');
+const fs = require('fs');
 
 const Koa = require('koa');
 const app = new Koa();
 const json = require('koa-json');
 const send = require('koa-send');
-const bodyparser = require('koa-bodyparser');
+const bodyparser = require('koa-body');
 const logger = require('koa-logger');
 
 const mongoose = require('mongoose');
@@ -12,14 +13,31 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://root:password@ds141328.mlab.com:41328/portal');
 
 const router = require('./routes/index');
+const uploadDir = './public/uploads/';
+
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 
 // middlewares
+app.use(async (ctx, next) => {
+  if (ctx.request.type === 'text/plain') {
+    ctx.request.header = {
+      ...ctx.request.header,
+      'content-type': 'application/json'
+    };
+  }
+  await next();
+});
+
 app.use(bodyparser({
-  enableTypes: ['json', 'form', 'text'],
-  extendTypes: {
-    json: ['text/plain']
+  multipart: true,
+  formidable: {
+    uploadDir: uploadDir,
+    keepExtensions: true
   }
 }));
+
 app.use(json());
 app.use(logger());
 app.use(require('koa-static')(path.join(__dirname, '/public')));
