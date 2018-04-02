@@ -41,9 +41,8 @@ const userSchema = new mongoose.Schema({
       ret.id = ret._id;
       ret.permissionId = ret._id;
 
-      if (!ret.access_token) {
-        ret.access_token = 'null';
-      }
+      // front end requires it and I don't know why
+      ret.access_token = 'token';
 
       delete ret._id;
       delete ret.__v;
