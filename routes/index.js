@@ -10,6 +10,8 @@ const updateUserPermission = require('./updateUserPermission');
 const saveUserImage = require('./saveUserImage');
 const newNews = require('./newNews');
 const getNews = require('./getNews');
+const deleteNews = require('./deleteNews');
+const updateNews = require('./updateNews');
 
 router.prefix('/api');
 
@@ -23,8 +25,10 @@ router.get('/getUsers', getUsers);
 router.get('/getNews', getNews);
 
 router.delete('/deleteUser/:id', deleteUser);
+router.delete('/deleteNews/:id', deleteNews);
 
 router.put('/updateUser/:id', updateUser);
 router.put('/updateUserPermission/:id', updateUserPermission);
+router.put('/updateNews/:id', updateNews);
 
 module.exports = router;
