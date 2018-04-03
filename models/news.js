@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const userSchema = new mongoose.Schema({
+const newsSchema = new mongoose.Schema({
   date: { type: String, required: true },
   text: { type: String, required: true },
   theme: { type: String, required: true },
-  userId: { type: String, required: true }
+  user: { type: ObjectId, ref: 'User' }
 }, {
   toObject: {
     transform: (doc, ret) => {
@@ -16,4 +17,4 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('news', userSchema);
+module.exports = mongoose.model('News', newsSchema);
