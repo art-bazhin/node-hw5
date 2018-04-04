@@ -25,3 +25,5 @@ npm run dev
 ```
 
 Для входа в профиль администратора: логин - admin, пароль - password.
+
+[Приложение на heroku.com](https://node-hw5.herokuapp.com/)
